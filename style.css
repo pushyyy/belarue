@@ -4,53 +4,65 @@
   font-family: 'Poppins', sans-serif;
 }
 body{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #000;
-  color: #fff;
 }
-
-.loading{
-  width: fit-content;
-  margin: 25% auto 0;
+.animated_card{
+  height: 500px;
+  width: 350px;
+  background: #222;
+  position: relative;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  cursor: pointer;
   overflow: hidden;
 }
-
-.loading span{
-  display: inline-block;
-  padding: 2px;
-  font-size: 50px;
-  transform: translateY(70px);
-  animation: moveup 3s linear infinite;
+nav{
+  color: #fff;
+  opacity: 0.1;
+  font-size: 2.5em;
+  z-index: 1;
 }
-@keyframes moveup {
-    0%{
-        transform: translateY(70px);
-    }
-    20%{
-      transform: translateY(0px);
-    }
-    100%{
-    transform: translateY(0px);
-    }
+.animated_card::before{
+  position: absolute;
+  content: '';
+  width: 50%;
+  height: 180%;
+  background: #ff0800;
+  transform: rotate(45deg);
 }
-
-.loading span:nth-child(2){
-    animation-delay: 0.2s;
+.animated_card::before{
+  animation: animate 5s linear infinite;
 }
-.loading span:nth-child(3){
-  animation-delay: 0.4s;
+@keyframes animate{
+  from{
+    transform: rotate(0def);
+  }
+  to{
+    transform: rotate(360deg);
+    filter: hue-rotate(-360deg) saturate(1000%);
+  }
 }
-.loading span:nth-child(4){
-  animation-delay: 0.6s;
+.animated_card::after{
+  position: absolute;
+  content: '';
+  inset: 10px;
+  background: #000;
+  border-radius: 8px;
 }
-.loading span:nth-child(5){
-  animation-delay: 0.8s;
+.mix{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin: 20px;   
 }
-.loading span:nth-child(6){
-  animation-delay: 1.0s;
-}
-.loading span:nth-child(7){
-  animation-delay: 1.2s;
-}
-.loading span:nth-child(8){
-  animation-delay: 1.4s;
+.mix h1{
+  font-size: 10px;
+  color: #fff;
+  font-weight: 600;
+  transition: 0,5s;
 }
